@@ -1,0 +1,114 @@
+﻿@model AuthProject.Models.Donor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Donor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           @* <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" required/>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+          
+            @*<div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>*@
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label" ></label>
+                    <input asp-for="Gender" type="radio" class="form-check-input" value="Male" required/>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                    </label>
+                    <input asp-for="Gender" type="radio" class="form-check-input" value="Female" required/>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Female
+                    </label>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <input asp-for="CityId" class="form-control" />
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="CityName" class="control-label" ></label>
+                <select class="form-select" asp-for="CityId" class="form-control" >
+                    <option selected value="" >Select City</option>
+                        @{
+                            foreach(var city in ViewBag.list)
+                            {
+                                <option value="@city.CityId">@city.CityName</option>
+                            }
+                        }
+                </select>
+                    <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" required />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="BloodGroup" class="control-label"></label>
+                <input asp-for="BloodGroup" class="form-control" />
+                <span asp-validation-for="BloodGroup" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                    <label asp-for="BloodGroup" class="control-label"></label>
+                    <select class="form-select" asp-for="BloodGroup">
+                        <option value="A+ve">A+ve</option>
+                        <option value="A-ve">A-ve</option>
+                        <option value="B+ve">B+ve</option>
+                        <option value="B-ve">B-ve</option>
+                        <option value="AB+ve">AB+ve</option>
+                        <option value="AB-ve">AB-ve</option>
+                        <option value="O+ve">O+ve</option>
+                        <option value="O-ve">O-ve</option>
+                    </select>
+                    <span asp-validation-for="BloodGroup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                    <input asp-for="Dob" type="date" class="form-control" required />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
